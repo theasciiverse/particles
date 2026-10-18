@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
 			mvprintw(4, 0, "<[/]> Maximum age:    %.1f", maxAge);
 			mvprintw(5, 0, "<X>   Clear all particles");
 			mvprintw(6, 0, "<`>   Change display");
-			mvprintw(7, 0, "<Q>   Quit program");
+			mvprintw(7, 0, "<Q/Esc> Quit program");
 		}
 		attroff(A_BOLD); attroff(COLOR_PAIR(4));
 
@@ -162,7 +162,16 @@ int main(int argc, char *argv[])
 			
 			case 'x': psys->clear(); break;
 			case '`': display ++; break;
-			case 'q': quitNow = 1; break;
+			case 'q': case 'Q': case 27: quitNow = 1; break; /* Q and Esc too (Asciiverse) */
+
+			case KEY_RESIZE: /* keep the emitter on the screen (Asciiverse) */
+#ifdef PDCURSES
+				resize_term(0, 0);
+#endif
+				getmaxyx(stdscr, ymax, xmax);
+				if (originX < 0 || originX * 2 > xmax - 2) originX = (float)(xmax+1) / 4.0f;
+				if (originY < 0 || originY > ymax - 1) originY = (float)(ymax+1) / 2.0f;
+				break;
 		}
 	}
 
