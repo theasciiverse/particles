@@ -1,3 +1,16 @@
+> **Play it with Asciiverse.** With [av](https://asciiverse.sh), the Asciiverse
+> client:
+>
+> ```
+> av install particles
+> av play particles
+> ```
+>
+> Or download the archive for your system from this repository's Releases,
+> unpack it and run `./particles` (`particles.exe` on Windows).
+>
+> The original README follows.
+
 # Particle Fountain
 
 An interactive particle fountain in the terminal, in C++ on curses, by
