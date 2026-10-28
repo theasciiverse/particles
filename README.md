@@ -6,9 +6,6 @@
 > av play particles
 > ```
 >
-> Or download the archive for your system from this repository's Releases,
-> unpack it and run `./particles` (`particles.exe` on Windows).
->
 > The original README follows.
 
 # Particle Fountain
